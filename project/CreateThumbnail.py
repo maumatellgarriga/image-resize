@@ -14,14 +14,10 @@ def resize_image(image_path, resized_path):
      
 def handler(event, context):
     for record in event['Records']:
-        print(record)
         bucket = record['s3']['bucket']['name']
         key = record['s3']['object']['key'] 
-        download_path = '/tmp/{}{}'.format(uuid.uuid4(), key)
+        download_path = '/tmp/{}'.format(key)
         upload_path = '/tmp/resized-{}'.format(key)
-        print("BUCKET", bucket)
-        print("KEY", key)
-        print("PATH", download_path)
         s3_client.download_file(bucket, key, download_path)
         resize_image(download_path, upload_path)
         s3_client.upload_file(upload_path, '{}-resized'.format(bucket), key)
