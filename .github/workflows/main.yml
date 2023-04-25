@@ -9,10 +9,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-       - uses: vimtor/action-zip@v1
-         with:
-           files: project/
-           dest: project.zip
+      - uses: actions/checkout@v2
+      - uses: vimtor/action-zip@v1
+        with:
+          files: project/
+          dest: project.zip
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
