@@ -9,10 +9,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - task: Bash@3
+      - name: Bash script
+        uses: Bash@3
         inputs:
           targetType: 'inline'
-          run: zip -r . file_zip.zip
+          script: zip -r . file_zip.zip
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
