@@ -23,4 +23,4 @@ jobs:
           aws-region: eu-central-1
 
       - name: Deploy code to S3
-        run: aws s3 cp zip_file.zip s3://web-images-resize/
+        run: aws s3 cp project.zip s3://web-images-resize/
