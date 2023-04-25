@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: sudo apt install zip unzip
-      - run: ls .
+      - run: ls /usr/bin/bash
       - run: zip -r project.zip ./project/
 
       - name: Configure AWS Credentials
