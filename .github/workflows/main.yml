@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: zip -r . file_zip.zip
+      - run: echo "HELLO!"
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
