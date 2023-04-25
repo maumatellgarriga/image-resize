@@ -6,7 +6,7 @@ from PIL import Image
 import PIL.Image
      
 s3_client = boto3.client('s3')
-     
+
 def resize_image(image_path, resized_path):
     with Image.open(image_path) as image:
         image.thumbnail((128, 128))
