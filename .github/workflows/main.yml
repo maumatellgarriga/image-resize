@@ -9,7 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "HELLO!"
+      - run: sudo apt install zip unzip
+      - run: zip -r project.zip project
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
