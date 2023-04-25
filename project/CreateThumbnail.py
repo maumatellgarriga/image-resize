@@ -14,6 +14,7 @@ def resize_image(image_path, resized_path):
      
 def handler(event, context):
     for record in event['Records']:
+        print(record)
         bucket = record['s3']['bucket']['name']
         key = record['s3']['object']['key'] 
         download_path = '/tmp/{}{}'.format(uuid.uuid4(), key)
