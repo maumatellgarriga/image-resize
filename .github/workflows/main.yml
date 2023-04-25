@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - task: Bash@3
-        script: zip files . > zip_file.zip
+        run: zip files . > zip_file.zip
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
