@@ -18,7 +18,9 @@ def handler(event, context):
         key = record['s3']['object']['key'] 
         download_path = '/tmp/{}{}'.format(uuid.uuid4(), key)
         upload_path = '/tmp/resized-{}'.format(key)
-        
+        print("BUCKET", bucket)
+        print("KEY", key)
+        print("PATH", download_path)
         s3_client.download_file(bucket, key, download_path)
         resize_image(download_path, upload_path)
         s3_client.upload_file(upload_path, '{}-resized'.format(bucket), key)
