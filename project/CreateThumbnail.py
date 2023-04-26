@@ -1,10 +1,7 @@
 import boto3
-import os
-import sys
-import uuid
 from PIL import Image
-import PIL.Image
-     
+import urllib.parse
+
 s3_client = boto3.client('s3')
 
 def resize_image(image_path, resized_path):
@@ -15,7 +12,7 @@ def resize_image(image_path, resized_path):
 def handler(event, context):
     for record in event['Records']:
         bucket = record['s3']['bucket']['name']
-        key = record['s3']['object']['key'] 
+        key = urllib.parse.unquote_plus(record['s3']['object']['key'], encoding='utf-8')
         download_path = '/tmp/{}'.format(key)
         upload_path = '/tmp/resized-{}'.format(key)
         s3_client.download_file(bucket, key, download_path)
