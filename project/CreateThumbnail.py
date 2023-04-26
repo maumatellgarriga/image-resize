@@ -1,6 +1,7 @@
 import boto3
 from PIL import Image
 import urllib.parse
+import os
 
 s3_client = boto3.client('s3')
 
@@ -19,6 +20,8 @@ def handler(event, context):
         print(key)
         print(download_path)
         print(upload_path)
+        if not os.path.exists(os.path.dirname(download_path)):
+            os.makedirs(os.path.dirname(download_path))
         #s3_client.download_file(bucket, key, download_path)
         #resize_image(download_path, upload_path)
         #s3_client.upload_file(upload_path, '{}-resized'.format(bucket), key)
